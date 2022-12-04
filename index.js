@@ -67,21 +67,25 @@ function renderGame() {
     dealerSumEl.textContent = "Dealer Sum: " + dealerSum
     if ((playerSum || dealerSum) <= 20) {
         message = "Do you want to draw a new card?"
+        messageEl.textContent = message
     } else if (playerSum === 21) {
         message = "You've got Blackjack!"
         hasBlackJack = true
         playerEl.textContent = player.name + ": $" + (player.chips += 10)
         dealerEl.textContent = dealer.name + ": $" + (dealer.chips -= 10)
+        messageEl.textContent = message
     } else if (dealerSum === 21) {
         message = "Dealer has Blackjack!"
         hasBlackJack = true
         playerEl.textContent = player.name + ": $" + (player.chips -= 10)
         dealerEl.textContent = dealer.name + ": $" + (dealer.chips += 10)
+        messageEl.textContent = message
     } else if (playerSum > 21) {
         message = "You Lost!"
         isAlive = false
         playerEl.textContent = player.name + ": $" + (player.chips -= 10)
         dealerEl.textContent = dealer.name + ": $" + (dealer.chips += 10)
+        messageEl.textContent = message
         
     } else if (dealerSum > 21) {
         message = "You Won!"
